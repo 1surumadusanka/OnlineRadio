@@ -1,12 +1,11 @@
-<%@ page language="java" 
-    contentType="text/html; charset=windows-1256"
-    pageEncoding="windows-1256"
 %>
-<% 
-    response.setHeader("Cache-Control","no-store, must-revalidate"); 
-    response.setHeader("Pragma","no-cache"); 
-    response.setDateHeader ("Expires", -1);
-    new java.util.Date();
+<%@ page language="java" contentType="text/html; charset=windows-1256"
+	pageEncoding="windows-1256"%>
+<%
+	response.setHeader("Cache-Control", "no-store, must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	response.setDateHeader("Expires", -1);
+	new java.util.Date();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +21,7 @@
 <body onload="$('#forgot_password').hide();">
 
 	<div class="container">
+
 		<div id="loginbox" style="margin-top: 50px;"
 			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-info">
@@ -29,16 +29,25 @@
 					<div class="panel-title">Sign In</div>
 					<div
 						style="float: right; font-size: 80%; position: relative; top: -10px">
-						<a href="#" onclick="$('#forgot_password').show(); $('#loginbox').hide();">Forgot password?</a>
+						<a href="#"
+							onclick="$('#forgot_password').show(); $('#loginbox').hide();">Forgot
+							password?</a>
 					</div>
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
 
-					<div style="display: none" id="login-alert"
-						class="alert alert-danger col-sm-12"></div>
+					<!-- <div style="display: none" id="login-alert"
+						class="alert alert-danger col-sm-12"></div> -->
+					<%
+						if ((String) request.getParameter("error") != null) {
+							out.println("<div class=\"alert alert-danger\" role=\"alert\">"
+									+ request.getParameter("error").toString() + "</div>");
+						}
+					%>
 
-					<form id="loginform" action="login" class="form-horizontal" role="form" method="post">
+					<form id="loginform" action="login" class="form-horizontal"
+						role="form" method="post">
 
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
@@ -67,8 +76,9 @@
 							<!-- Button -->
 
 							<div class="col-sm-12 controls">
-								<button type="submit" id="btn-login" href="#" class="btn btn-success">Login </button> <a
-									id="btn-fblogin" href="#" class="btn btn-primary">Login
+								<button type="submit" id="btn-login" href="#"
+									class="btn btn-success">Login</button>
+								<a id="btn-fblogin" href="#" class="btn btn-primary">Login
 									with Facebook</a>
 
 							</div>
@@ -87,7 +97,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="forgot_password" style="margin-top: 50px;"
 			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-info">
@@ -95,7 +105,9 @@
 					<div class="panel-title">Forgot password?</div>
 					<div
 						style="float: right; font-size: 80%; position: relative; top: -10px">
-						<a href="#" onclick="$('#loginbox').show(); $('#forgot_password').hide();">Sign In</a>
+						<a href="#"
+							onclick="$('#loginbox').show(); $('#forgot_password').hide();">Sign
+							In</a>
 					</div>
 				</div>
 
@@ -112,12 +124,13 @@
 								type="text" class="form-control" name="username" value=""
 								placeholder="username or email">
 						</div>
-						
+
 						<div style="margin-top: 10px" class="form-group">
 							<!-- Button -->
 
 							<div class="col-sm-12 controls">
-								<a id="btn-login" href="#" class="btn btn-success">Change Password</a>
+								<a id="btn-login" href="#" class="btn btn-success">Change
+									Password</a>
 							</div>
 						</div>
 
@@ -135,7 +148,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="signupbox" style="display: none; margin-top: 50px"
 			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-info">
@@ -206,7 +219,7 @@
 								<button id="btn-signup" type="button" class="btn btn-info">
 									<i class="icon-hand-right"></i> &nbsp Sign Up
 								</button>
-								
+
 							</div>
 						</div>
 
